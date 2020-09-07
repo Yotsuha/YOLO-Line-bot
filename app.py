@@ -34,9 +34,9 @@ from config import client_id, client_secret, album_id, access_token, refresh_tok
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('')
+line_bot_api = LineBotApi('g2cfcaiQgAc9+Sg9JcAnO4OvXqvvNkrIDeFEy089oG7cmO8yXRshePGa+wgTzAQ2aoDinj9TBGu2471l4BqtZXQJWCraicw5S5V8HgyBdoNtLQos4MMJdanGMaC24jSUvWkHbMj6xt66bvhLl11MbAdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('')
+handler = WebhookHandler('ad814823ebf9b33b2f47f96bacfc3734')
 
 # Google Sheet Config
 GDriveJSON = 'LineBotSheet.json'
