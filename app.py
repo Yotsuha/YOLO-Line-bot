@@ -115,23 +115,29 @@ def handle_image_message(event):
     try:
         client = ImgurClient(client_id, client_secret, access_token, refresh_token)
         config = {
-            'album': album_id,
+           # 'album': album_id,
             'name': event.message.id,
-            'title': event.message.id,
-            'description': 'yolo'
+           # 'title': event.message.id,
+           # 'description': 'yolo'
         }
-        client.upload_from_path('./predictions.jpg', config=config, anon=False)
 
+        result = client.upload_from_path('./predictions.jpg', config=config, anon=False)
+
+        imgur_json = json.dumps({'imgur_url':result['link']})
+        print('upload\n')
         # reply url to user
         images = client.get_album_images(album_id)
-        url = images[-1].link
+        #url = images[-1].link
+        url = url=imgur_json[15:-2]
+        print(url)
+        print('\n')
         image_message = ImageSendMessage(
             original_content_url=url,
             preview_image_url=url
         )
-
+        print('uppppppppppppppppp\n')
         line_bot_api.push_message(event.source.user_id, image_message)
-
+        print('End\n')
     except:
        message = TextSendMessage(text="辨識完成，但上傳至imgur失敗")
        line_bot_api.reply_message(event.reply_token, message)
